@@ -1,38 +1,30 @@
-name: Deploy to GitHub Pages
+name: Run Setup Script and Deploy
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  build-and-deploy:
+  setup-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      # Step 1: Checkout Repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
+      # Step 2: Ensure Execution Permissions for `setup.sh`
+      - name: Make setup.sh Executable
+        run: chmod +x setup.sh
 
-      - name: Install dependencies
-        run: npm install
+      # Step 3: Run setup.sh Script
+      - name: Run Setup Script
+        run: ./setup.sh
 
-      - name: Run setup script
-        run: bash setup.sh
-
-      - name: Build project
-        run: npm run build
-
+      # Step 4: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          commit_message: 'Automated deployment'
+          publish_dir: .
