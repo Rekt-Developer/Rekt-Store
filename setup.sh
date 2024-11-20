@@ -6,7 +6,7 @@ create_directory() {
     if mkdir -p "$dir"; then
         echo "Created directory: $dir"
     else
-        echo "Failed to create directory: $ dir"
+        echo "Failed to create directory: $dir"
         exit 1
     fi
 }
@@ -17,7 +17,7 @@ create_file() {
     if touch "$file"; then
         echo "Created file: $file"
     else
-        echo "Failed to_create_file: $file"
+        echo "Failed to create file: $file"
         exit 1
     fi
 }
@@ -29,7 +29,7 @@ write_to_file() {
     if echo "$content" > "$file"; then
         echo "Wrote content to: $file"
     else
-        echo "Failed to_write_content_to: $file"
+        echo "Failed to write content to: $file"
         exit 1
     fi
 }
@@ -38,10 +38,13 @@ write_to_file() {
 generate_html() {
     local file=$1
     local template=$2
-    if cat > "$file" << 'EOL' && echo "$template"; then
+    if cat > "$file" << 'EOL'
+        $template
+    EOL
+    then
         echo "Generated HTML content for: $file"
     else
-        echo "Failed to_generate_HTML_content_for: $file"
+        echo "Failed to generate HTML content for: $file"
         exit 1
     fi
 }
@@ -50,10 +53,13 @@ generate_html() {
 generate_css() {
     local file=$1
     local template=$2
-    if cat > "$file" << 'EOL' && echo "$template"; then
+    if cat > "$file" << 'EOL'
+        $template
+    EOL
+    then
         echo "Generated CSS content for: $file"
     else
-        echo "Failed_to_generate_CSS_content_for: $file"
+        echo "Failed to generate CSS content for: $file"
         exit 1
     fi
 }
@@ -62,10 +68,13 @@ generate_css() {
 generate_js() {
     local file=$1
     local template=$2
-    if cat > "$file" << 'EOL' && echo "$template"; then
+    if cat > "$file" << 'EOL'
+        $template
+    EOL
+    then
         echo "Generated JS content for: $file"
     else
-        echo "Failed_to_generate_JS_content_for: $file"
+        echo "Failed to generate JS content for: $file"
         exit 1
     fi
 }
@@ -74,10 +83,13 @@ generate_js() {
 generate_json() {
     local file=$1
     local template=$2
-    if cat > "$file" << 'EOL' && echo "$template"; then
+    if cat > "$file" << 'EOL'
+        $template
+    EOL
+    then
         echo "Generated JSON content for: $file"
     else
-        echo "Failed_to_generate_JSON_content_for: $file"
+        echo "Failed to generate JSON content for: $file"
         exit 1
     fi
 }
@@ -86,19 +98,22 @@ generate_json() {
 generate_readme() {
     local file=$1
     local template=$2
-    if cat > "$file" << 'EOL' && echo "$template"; then
+    if cat > "$file" << 'EOL'
+        $template
+    EOL
+    then
         echo "Generated README content for: $file"
     else
-        echo "Failed_to_generate_README_content_for: $file"
+        echo "Failed to generate README content for: $file"
         exit 1
     fi
 }
 
 # Main script execution
-echo "Starting advanced_setup_for_Rekt-Store..."
+echo "Starting advanced setup for Rekt-Store..."
 
 # Project Structure
-echo "Setting_up_project_files_and_directories..."
+echo "Setting up project files and directories..."
 create_directory "css"
 create_directory "js"
 create_directory "data"
@@ -111,6 +126,7 @@ create_file ".gitignore"
 create_file "README.md"
 create_file "admin/README.md"
 create_file "config.json"
+create_file "package.json"
 
 # Generate Main Storefront
 generate_html "index.html" "
@@ -119,9 +135,9 @@ generate_html "index.html" "
 <head>
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    <meta name=\"description\" content=\"Rekt-Store: A_futuristic_marketplace_for_crypto_enthusiasts.\">
+    <meta name=\"description\" content=\"Rekt-Store: A futuristic marketplace for crypto enthusiasts.\">
     <meta property=\"og:title\" content=\"Rekt-Store\">
-    <meta property=\"og:description\" content=\"Explore_and_trade_products_with_TonConnect_wallet_integration.\">
+    <meta property=\"og:description\" content=\"Explore and trade products with TonConnect wallet integration.\">
     <meta property=\"og:image\" content=\"https://via.placeholder.com/1200x630\">
     <meta property=\"og:url\" content=\"https://rekt-developer.github.io/Rekt-Store/\">
     <title>Rekt-Store</title>
@@ -132,26 +148,26 @@ generate_html "index.html" "
 <body>
     <header class=\"header\">
         <nav class=\"navbar\">
-            <a href=\"#\" class=\"brand\"><img src=\"images/logo.svg\" alt=\"Rekt-Store_Logo\"></a>
+            <a href=\"#\" class=\"brand\"><img src=\"images/logo.svg\" alt=\"Rekt-Store Logo\"></a>
             <ul class=\"nav-links\">
                 <li><a href=\"#store\">Store</a></li>
                 <li><a href=\"admin.html\">Admin</a></li>
-                <li><button id=\"connectWallet\">Connect_Wallet</button></li>
+                <li><button id=\"connectWallet\">Connect Wallet</button></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id=\"store\" class=\"store\">
-            <h1>Welcome_to_Rekt-Store</h1>
+        <section id=\"store\" class=\"store-section\">
+            <h1>Welcome to Rekt-Store</h1>
             <div id=\"productGrid\" class=\"product-grid\">
-                <!-- Products_dynamically_listed_here -->
+                <!-- Products dynamically loaded here -->
             </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Rekt-Store. Powered_by <a href=\"https://ton.org\" target=\"_blank\">TON</a>.</p>
+        <p>&copy; 2024 Rekt-Store. Powered by <a href=\"https://ton.org\" target=\"_blank\">TON</a>.</p>
     </footer>
-    <!-- TonConnect_Wallet_Integration -->
+    <!-- TonConnect Wallet Integration -->
     <script src=\"https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect.min.js\"></script>
     <script src=\"js/tonconnect.js\"></script>
     <script src=\"js/main.js\"></script>
@@ -161,43 +177,43 @@ generate_html "index.html" "
 
 # Generate Admin Panel
 generate_html "admin.html" "
-<!DOCTYPEhtml>
+<!DOCTYPE html>
 <html lang=\"en\">
 <head>
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    <title>Admin_Panel</title>
+    <title>Admin Panel - Rekt-Store</title>
     <link rel=\"stylesheet\" href=\"css/style.css\">
 </head>
 <body>
     <header class=\"header\">
         <nav class=\"navbar\">
-            <a href=\"#\" class=\"brand\"><img src=\"images/logo.svg\" alt=\"Rekt-Store_Logo\"></a>
+            <a href=\"index.html\" class=\"brand\"><img src=\"images/logo.svg\" alt=\"Rekt-Store Logo\"></a>
             <ul class=\"nav-links\">
                 <li><a href=\"index.html\">Store</a></li>
-                <li><button id=\"connectWallet\">Connect_Wallet</button></li>
+                <li><button id=\"connectWallet\">Connect Wallet</button></li>
             </ul>
         </nav>
     </header>
     <main>
         <section class=\"admin-panel\">
-            <h1>Admin_Panel</h1>
+            <h1>Admin Panel</h1>
             <form id=\"addProductForm\">
-                <input type=\"text\" id=\"productName\" placeholder=\"Product_Name\" required>
-                <input type=\"number\" id=\"productPrice\" placeholder=\"Price_(TON)\" required>
+                <input type=\"text\" id=\"productName\" placeholder=\"Product Name\" required>
+                <input type=\"number\" id=\"productPrice\" placeholder=\"Price (TON)\" required>
                 <textarea id=\"productDescription\" placeholder=\"Description\" required></textarea>
-                <input type=\"url\" id=\"productImage\" placeholder=\"Image_URL\" required>
-                <button type=\"submit\">Add_Product</button>
+                <input type=\"url\" id=\"productImage\" placeholder=\"Image URL\" required>
+                <button type=\"submit\">Add Product</button>
             </form>
             <div id=\"productList\">
-                <!-- Products_dynamically_listed_here -->
+                <!-- Products dynamically listed here -->
             </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Rekt-Store. Managed_by_admins_with â¤ï¸ for_crypto.</p>
+        <p>&copy; 2024 Rekt-Store. Managed by admins with â¤ï¸ for crypto.</p>
     </footer>
-    <!-- TonConnect_Wallet_Integration -->
+    <!-- TonConnect Wallet Integration -->
     <script src=\"https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect.min.js\"></script>
     <script src=\"js/tonconnect.js\"></script>
     <script src=\"js/admin.js\"></script>
@@ -213,7 +229,9 @@ generate_css "css/style.css" "
   --accent-color: #ff0000;
   --text-color: #333;
   --background-color: #f9f9f9;
+  --font Family
   --font-family: 'Roboto', sans-serif;
+  -- Transition Duration
   --transition-duration: 0.3s;
 }
 
@@ -232,7 +250,7 @@ body {
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
-    transition: background-color var(--transition-duration), colorvar(--transition-duration);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
 }
 
 .header {
@@ -263,7 +281,7 @@ body {
     color: var(--accent-color);
 }
 
-.store, .admin-panel {
+.store-section, .admin-panel {
     padding: 2rem;
 }
 
@@ -423,14 +441,14 @@ generate_json "data/products.json" "
             \"id\": 1,
             \"name\": \"TON Wallet\",
             \"price\": 15.00,
-            \"description\": \"Secure TON wallet for crypto assets.\", 
+            \"description\": \"Secure TON wallet for crypto assets.\",
             \"image\": \"https://via.placeholder.com/150\"
         },
         {
             \"id\": 2,
             \"name\": \"TON T-Shirt\",
             \"price\": 10.00,
-            \"description\": \"Premium crypto merch for enthusiasts.\", 
+            \"description\": \"Premium crypto merch for enthusiasts.\",
             \"image\": \"https://via.placeholder.com/150\"
         }
     ]
@@ -494,37 +512,33 @@ generate_json "config.json" "
 }
 "
 
-# Admin Panel README
-generate_readme "admin/README.md" "
-# Rekt-Store Admin Panel
-
-This is the admin panel for Rekt-Store, a modern storefront with advanced features.
-
-## Security Configuration
-To secure the admin panel, you need to set up the `config.json` file in the root directory. This file should contain the following information:
-
-- `adminUsername`: The username for admin access.
-- `adminPassword`: The password for admin access.
-
-Make sure to keep this file secure and do not commit it to public repositories.
-
-## TonConnect Wallet Integration
-To integrate TonConnect, follow these steps:
-
-1. Create a `tonconnect-manifest.json` file in the root directory with the following structure:
-\```json
+# Create package.json for npm
+generate_json "package.json" "
 {
-  \"url\": \"https://rekt-developer.github.io/Rekt-Store/\",
-  \"name\": \"Rekt-Store\",
-  \"iconUrl\": \"https://rekt-developer.github.io/Rekt-Store/images/logo.svg\",
-  \"termsOfServiceUrl\": \"https://rekt-developer.github.io/Rekt-Store/terms\",
-  \"privacyPolicyUrl\": \"https://rekt-developer.github.io/Rekt-Store/privacy\"
+  \"name\": \"rekt-store\",
+  \"version\": \"1.0.0\",
+  \"description\": \"A modern storefront with advanced UI and TonConnect wallet integration\",
+  \"main\": \"index.html\",
+  \"scripts\": {
+    \"start\": \"live-server\",
+    \"build\": \"cp -r . dist/\"
+  },
+  \"keywords\": [
+    \"crypto\",
+    \"storefront\",
+    \"TonConnect\",
+    \"responsive\",
+    \"modern\"
+  ],
+  \"author\": \"Your Name\",
+  \"license\": \"MIT\",
+  \"dependencies\": {
+    \"@tonconnect/sdk\": \"latest\"
+  },
+  \"devDependencies\": {
+    \"live-server\": \"^1.2.1\"
+  }
 }
-\```
-2. Update the `js/main.js` and `js/admin.js` files with your TonConnect manifest URL and wallet address.
-
-## Advanced Features
-- Implement additional features as needed, such as user authentication, product categories, and more.
 "
 
 echo "Project setup complete. You can now start working on your Rekt-Store project!"
