@@ -1,0 +1,27 @@
+
+{
+  "name": "rekt-store",
+  "version": "1.0.0",
+  "description": "A modern storefront with advanced UI and TonConnect wallet integration",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server",
+    "build": "cp -r . dist/"
+  },
+  "keywords": [
+    "crypto",
+    "storefront",
+    "TonConnect",
+    "responsive",
+    "modern"
+  ],
+  "author": "Likhon Sheikh",
+  "license": "MIT",
+  "dependencies": {
+    "@tonconnect/sdk": "latest"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
+

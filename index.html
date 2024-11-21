@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rekt-Store: A futuristic marketplace for crypto enthusiasts.">
+    <meta property="og:title" content="Rekt-Store">
+    <meta property="og:description" content="Explore and trade products with TonConnect wallet integration.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630">
+    <meta property="og:url" content="https://rekt-developer.github.io/Rekt-Store/">
+    <title>Rekt-Store</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="brand"><img src="images/logo.svg" alt="Rekt-Store Logo"></a>
+            <ul class="nav-links">
+                <li><a href="#store">Store</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><button id="connectWallet">Connect Wallet</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="store" class="store-section">
+            <h1>Welcome to Rekt-Store</h1>
+            <div id="productGrid" class="product-grid">
+                <!-- Products dynamically loaded here -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Rekt-Store. Powered by <a href="https://ton.org" target="_blank">TON</a>.</p>
+    </footer>
+    <!-- TonConnect Wallet Integration -->
+    <script src="https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect.min.js"></script>
+    <script src="js/tonconnect.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Rekt-Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="brand"><img src="images/logo.svg" alt="Rekt-Store Logo"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Store</a></li>
+                <li><button id="connectWallet">Connect Wallet</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="admin-panel">
+            <h1>Admin Panel</h1>
+            <form id="addProductForm">
+                <input type="text" id="productName" placeholder="Product Name" required>
+                <input type="number" id="productPrice" placeholder="Price (TON)" required>
+                <textarea id="productDescription" placeholder="Description" required></textarea>
+                <input type="url" id="productImage" placeholder="Image URL" required>
+                <button type="submit">Add Product</button>
+            </form>
+            <div id="productList">
+                <!-- Products dynamically listed here -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Rekt-Store. Managed by admins with â¤ï¸ for crypto.</p>
+    </footer>
+    <!-- TonConnect Wallet Integration -->
+    <script src="https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect.min.js"></script>
+    <script src="js/tonconnect.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
+
