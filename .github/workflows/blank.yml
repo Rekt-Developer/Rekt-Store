@@ -1,38 +1,41 @@
-name: Deploy to GitHub Pages
+name: Run Setup and Commit Changes
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  setup-and-commit:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      # Step 1: Checkout the repository
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
+      # Step 2: Run the setup.sh script
+      - name: Run Setup Script
+        run: |
+          chmod +x setup.sh
+          ./setup.sh
 
-      - name: Install dependencies
-        run: npm install
+      # Step 3: Configure Git
+      - name: Set Up Git User
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
 
-      - name: Run setup script
-        run: bash setup.sh
+      # Step 4: Commit Changes
+      - name: Commit Changes
+        run: |
+          git add .
+          git commit -m "Automated setup and changes via GitHub Actions" || echo "No changes to commit"
 
-      - name: Build project
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          commit_message: 'Automated deployment'
+      # Step 5: Push Changes
+      - name: Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin main
