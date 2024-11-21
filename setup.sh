@@ -39,8 +39,8 @@ generate_html() {
     local file=$1
     local template=$2
     if cat > "$file" << 'EOL'
-        $template
-    EOL
+$template
+EOL
     then
         echo "Generated HTML content for: $file"
     else
@@ -54,8 +54,8 @@ generate_css() {
     local file=$1
     local template=$2
     if cat > "$file" << 'EOL'
-        $template
-    EOL
+$template
+EOL
     then
         echo "Generated CSS content for: $file"
     else
@@ -69,8 +69,8 @@ generate_js() {
     local file=$1
     local template=$2
     if cat > "$file" << 'EOL'
-        $template
-    EOL
+$template
+EOL
     then
         echo "Generated JS content for: $file"
     else
@@ -84,8 +84,8 @@ generate_json() {
     local file=$1
     local template=$2
     if cat > "$file" << 'EOL'
-        $template
-    EOL
+$template
+EOL
     then
         echo "Generated JSON content for: $file"
     else
@@ -99,8 +99,8 @@ generate_readme() {
     local file=$1
     local template=$2
     if cat > "$file" << 'EOL'
-        $template
-    EOL
+$template
+EOL
     then
         echo "Generated README content for: $file"
     else
@@ -229,9 +229,7 @@ generate_css "css/style.css" "
   --accent-color: #ff0000;
   --text-color: #333;
   --background-color: #f9f9f9;
-  --font Family
   --font-family: 'Roboto', sans-serif;
-  -- Transition Duration
   --transition-duration: 0.3s;
 }
 
@@ -461,7 +459,7 @@ generate_readme "README.md" "
 
 Welcome to **Rekt-Store**, a modern storefront with advanced UI and TonConnect wallet integration.
 
-Features:
+## Features
 - Wallet connection using **TonConnect**.
 - Modern, fully responsive design.
 - Dynamic product management (CRUD) via **Admin Panel**.
@@ -502,6 +500,14 @@ To integrate TonConnect, follow these steps:
 
 ## Advanced Features
 - Implement additional features as needed, such as user authentication, product categories, and more.
+
+## Support and Donations
+For support, join our Telegram channel: [Rekt Developers](https://t.me/RektDevelopers)
+
+Donations are greatly appreciated:
+- Ethereum: 0x3A06322e9F1124F6B2de8F343D4FDce4D1009869
+
+Author: Likhon Sheikh
 "
 
 # Create config.json for admin panel security
@@ -530,7 +536,7 @@ generate_json "package.json" "
     \"responsive\",
     \"modern\"
   ],
-  \"author\": \"Your Name\",
+  \"author\": \"Likhon Sheikh\",
   \"license\": \"MIT\",
   \"dependencies\": {
     \"@tonconnect/sdk\": \"latest\"
