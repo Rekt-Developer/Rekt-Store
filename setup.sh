@@ -18,7 +18,7 @@ create_file() {
         echo "Created file: $file"
     else
         echo "Failed to create file: $file"
-        exit **1**
+        exit 1
     fi
 }
 
@@ -38,7 +38,7 @@ write_to_file() {
 generate_html() {
     local file=$1
     local template=$2
-    if cat > "$file" << 'EOF'
+    if cat > "$file" << EOF
 $template
 EOF
     then
@@ -53,7 +53,7 @@ EOF
 generate_css() {
     local file=$1
     local template=$2
-    if cat > "$file" << 'EOF'
+    if cat > "$file" << EOF
 $template
 EOF
     then
@@ -68,7 +68,7 @@ EOF
 generate_js() {
     local file=$1
     local template=$2
-    if cat > "$file" << 'EOF'
+    if cat > "$file" << EOF
 $template
 EOF
     then
@@ -83,7 +83,7 @@ EOF
 generate_json() {
     local file=$1
     local template=$2
-    if cat > "$file" << 'EOF'
+    if cat > "$file" << EOF
 $template
 EOF
     then
@@ -98,7 +98,7 @@ EOF
 generate_readme() {
     local file=$1
     local template=$2
-    if cat > "$file" << 'EOF'
+    if cat > "$file" << EOF
 $template
 EOF
     then
@@ -211,7 +211,7 @@ generate_html "admin.html" "
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Rekt-Store. Managed by admins with ❤️ for crypto.</p>
+        <p>&copy; 2024 Rekt-Store. Managed by admins with â¤ï¸ for crypto.</p>
     </footer>
     <!-- TonConnect Wallet Integration -->
     <script src=\"https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect.min.js\"></script>
@@ -337,12 +337,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         products.forEach(product => {
             const card = document.createElement('div');
             card.classList.add('product-card');
-            card.innerHTML = `
-                <img src="${product.image}" alt="${product.name}">
-                <h2>${product.name}</h2>
-                <p>${product.price} TON</p>
-                <p>${product.description}</p>
-            `;
+            card.innerHTML = \`
+                <img src="\${product.image}" alt="\${product.name}">
+                <h2>\${product.name}</h2>
+                <p>\${product.price} TON</p>
+                <p>\${product.description}</p>
+            \`;
             productGrid.appendChild(card);
         });
     } catch (error) {
@@ -397,12 +397,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create a new product card and append it to the product list
         const newProductCard = document.createElement('div');
         newProductCard.classList.add('product-card');
-        newProductCard.innerHTML = `
-            <img src="${productImage}" alt="${productName}">
-            <h2>${productName}</h2>
-            <p>${productPrice} TON</p>
-            <p>${productDescription}</p>
-        `;
+        newProductCard.innerHTML = \`
+            <img src="\${productImage}" alt="\${productName}">
+            <h2>\${productName}</h2>
+            <p>\${productPrice} TON</p>
+            <p>\${productDescription}</p>
+        \`;
         productList.appendChild(newProductCard);
 
         // Clear the form fields
@@ -469,12 +469,12 @@ Welcome to **Rekt-Store**, a modern storefront with advanced UI and TonConnect w
 ## How to Run
 1. Clone this repository.
 2. Set up your admin panel by creating a `config.json` file in the root directory with the following structure:
-```json
+\```json
 {
   \"adminUsername\": \"your_admin_username\",
   \"adminPassword\": \"your_admin_password\"
 }
-```
+\```
 3. Open `index.html` for the store.
 4. Open `admin.html` for product management.
 
@@ -483,7 +483,7 @@ Live Demo: [Rekt-Store GitHub Pages](https://rekt-developer.github.io/Rekt-Store
 ## TonConnect Wallet Integration
 To integrate TonConnect, follow these steps:
 1. Create a `tonconnect-manifest.json` file in the root directory with the following structure:
-```json
+\```json
 {
   \"url\": \"https://rekt-developer.github.io/Rekt-Store/\",
   \"name\": \"Rekt-Store\",
@@ -491,7 +491,7 @@ To integrate TonConnect, follow these steps:
   \"termsOfServiceUrl\": \"https://rekt-developer.github.io/Rekt-Store/terms\",
   \"privacyPolicyUrl\": \"https://rekt-developer.github.io/Rekt-Store/privacy\"
 }
-```
+\```
 2. Update the `js/main.js` and `js/admin.js` files with your TonConnect manifest URL and wallet address.
 
 ## Security
